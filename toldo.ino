@@ -2,6 +2,7 @@ const int led13 = 13;
 const int bajaToldo=9;
 const int paraToldo=11;
 const int subeToldo=10;
+String estadoToldo="off";
 
 void setup()
 {
@@ -10,6 +11,10 @@ void setup()
   pinMode(bajaToldo,OUTPUT);
   pinMode(paraToldo,OUTPUT);
   pinMode(subeToldo,OUTPUT);
+  //Quitamos el toldo al empezar para que el estado sea off
+  digitalWrite(led13,LOW);
+  delay(50);
+  digitalWrite(subeToldo,LOW);
 }
  
 void loop()
@@ -26,6 +31,7 @@ void loop()
       digitalWrite(led13,LOW);
       delay(50);
       digitalWrite(subeToldo,LOW);
+      estadoToldo="off";
     }else if(data=="paraToldo"){
       digitalWrite(paraToldo,HIGH);
       Serial.println("paraToldo");
@@ -45,14 +51,17 @@ void loop()
       digitalWrite(led13,HIGH);
       delay(200);
       digitalWrite(led13,LOW);
-      
-      
+      estadoToldo="half";
     }else if(data=="ponToldo"){
       digitalWrite(bajaToldo,HIGH);
       Serial.println("Bajando");
       digitalWrite(led13,HIGH);
       delay(50);
       digitalWrite(bajaToldo,LOW);
+      estadoToldo="on";
+    }else if(data=="estadoToldo"){
+      digitalWrite(bajaToldo,HIGH);
+      Serial.println(estadoToldo);
     }
     //digitalWrite(Led13,LOW);
   }
