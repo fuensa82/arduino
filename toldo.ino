@@ -22,19 +22,19 @@ void loop()
   if (Serial.available()>0){
     //leemos la opcion enviada
     String data = Serial.readStringUntil('\n');
-    Serial.print("Datos Leidos: ");
+    Serial.print("Ard. Datos Leidos: ");
     Serial.println(data);
     //digitalWrite(led13,HIGH);
     if(data=="quitaToldo"){
       digitalWrite(subeToldo,HIGH);
-      Serial.println("quitaToldo");
+      //Serial.println("Ard. quitaToldo");
       digitalWrite(led13,LOW);
       delay(50);
       digitalWrite(subeToldo,LOW);
       estadoToldo="off";
     }else if(data=="paraToldo"){
       digitalWrite(paraToldo,HIGH);
-      Serial.println("paraToldo");
+      //Serial.println("Ard. paraToldo");
       delay(50);
       digitalWrite(paraToldo,LOW);
       delay(200);
@@ -54,7 +54,7 @@ void loop()
       estadoToldo="half";
     }else if(data=="ponToldo"){
       digitalWrite(bajaToldo,HIGH);
-      Serial.println("Bajando");
+      //Serial.println("Ard. Bajando");
       digitalWrite(led13,HIGH);
       delay(50);
       digitalWrite(bajaToldo,LOW);
